@@ -1,2 +1,4 @@
-# Freetail-Summer-Hacks
-A repository for the Freetail Summer Hackathon Project.
+# summerhacks-react
+ReactJS front-end for summerhacks project
+
+Make sure to run `npm install`
