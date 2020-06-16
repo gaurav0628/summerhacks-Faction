@@ -6,6 +6,9 @@ import {Grid} from "@material-ui/core";
 import LoginRegister from "./pages/LoginRegister";
 import Dashboard from "./pages/Dashboard";
 
+//Style
+import './App.css';
+
 class App extends React.Component {
   render() {
     return (
@@ -26,9 +29,12 @@ class App extends React.Component {
 
         </Grid>
         <Grid item container>
-          <Grid item xs={6}></Grid>
+          <Grid item xs={6} className="panels leftPanel">
 
-          <Grid item xs={6}>
+
+          </Grid>
+
+          <Grid item xs={6} className = "panels">
 
           <Switch>
             <Route exact path="/" component={LoginRegister} />

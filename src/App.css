@@ -1,0 +1,8 @@
+.panels{
+  height: 98vh;
+  width: 100%;
+}
+.leftPanel{
+  background-image:url('images/collaboration.jpg');
+  background-size: cover;
+}
