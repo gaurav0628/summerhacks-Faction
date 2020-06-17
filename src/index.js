@@ -11,9 +11,3 @@ ReactDOM.render(
   </BrowserRouter>,
   rootElement
 );
-
-/*
-
-Reponsible for rendering the entire App
-
-*/

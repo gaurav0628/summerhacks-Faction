@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
+import { Link } from "react-router-dom";
 
 class RegisterForm extends React.Component {
   constructor(props) {
@@ -33,38 +34,18 @@ class RegisterForm extends React.Component {
       firstName: "",
       lastName: ""
     });
-
-    let msg =
-      data.firstName +
-      " | " +
-      data.lastName +
-      " | " +
-      data.email +
-      " | " +
-      data.password +
-      " | " +
-      data.cPassword;
-    alert(msg);
-
-    // axios.post(`FAKEURL`, { data }).then(res => {
-    //   console.log(res);
-    //   console.log(res.data);
-    // });
-
-    /*    axios
-      .post(`https://jsonplaceholder.typicode.com/users`, { user })
-      .then(res => {
-        console.log(res);
-        console.log(res.data);
-      });
-
-
-          axios.get(`https://jsonplaceholder.typicode.com/users`)
-      .then(res => {
-        const persons = res.data;
-        this.setState({ persons });
+    console.log({ user: data });
+    // validation needed
+    axios
+      .post("api/users", {
+        user: data
       })
-      */
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
   render() {
     const data = this.state;
@@ -122,6 +103,10 @@ class RegisterForm extends React.Component {
           fullWidth
         >
           Register
+        </Button>
+        <br />
+        <Button variant="contained" component={Link} to="/login" fullWidth>
+          Log in Instead
         </Button>
       </>
     );

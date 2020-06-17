@@ -2,6 +2,7 @@ import React from "react";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import axios from "axios";
+import { Link } from "react-router-dom";
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -27,17 +28,18 @@ class LoginForm extends React.Component {
       email: "",
       password: ""
     });
-    alert(
-      "submitted login: email(" +
-        data.email +
-        ") || password(" +
-        data.password +
-        ")"
-    );
-    /*  axios.post(`https://jsonplaceholder.typicode.com/`, { data }).then(res => {
-      console.log(res);
-      console.log(res.data);
-    });*/
+    console.log(data);
+    // validation needed
+    axios
+      .post("api/auth", {
+        data
+      })
+      .then(function(response) {
+        console.log(response);
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
   }
   render() {
     const data = this.state;
@@ -68,6 +70,10 @@ class LoginForm extends React.Component {
           fullWidth
         >
           Log in
+        </Button>
+        <br />
+        <Button variant="contained" component={Link} to="/register" fullWidth>
+          Register Instead
         </Button>
       </>
     );

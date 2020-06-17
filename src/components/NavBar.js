@@ -37,7 +37,12 @@ class NavBar extends React.Component {
                   Donate
                 </Button>
               </Grid>
-              <Grid item xs={8} />
+              <Grid item xs={7} />
+              <Grid item xs={1}>
+                <Button fullWidth color="inherit" component={Link} to="/login">
+                  Log in
+                </Button>
+              </Grid>
               <Grid item xs={1}>
                 <Button
                   fullWidth
@@ -45,9 +50,9 @@ class NavBar extends React.Component {
                   disableElevation
                   color="secondary"
                   component={Link}
-                  to="/login"
+                  to="/register"
                 >
-                  Log in
+                  Register
                 </Button>
               </Grid>
             </Grid>

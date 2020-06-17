@@ -7,7 +7,8 @@ import Donate from "./pages/Donate";
 import Courses from "./pages/Courses";
 import About from "./pages/About";
 import NavBar from "./components/NavBar";
-import LoginRegister from "./pages/LoginRegister";
+import LoginForm from "./components/LoginForm";
+import RegisterForm from "./components/RegisterForm";
 
 //Style
 import "./App.css";
@@ -25,7 +26,8 @@ class App extends React.Component {
                 <Route path="/about" component={About} />
                 <Route path="/courses" component={Courses} />
                 <Route path="/donate" component={Donate} />
-                <Route path="/" component={LoginRegister} />
+                <Route path="/register" component={RegisterForm} />
+                <Route path="/" component={LoginForm} />
               </Switch>
             </Grid>
           </Grid>
