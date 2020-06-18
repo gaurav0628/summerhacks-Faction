@@ -28,8 +28,10 @@ class App extends React.Component {
               <Grid item xs={2}></Grid>
               <Grid item xs={8}>
                 <div>
-                  <Typography variant='h5' gutterbottom className = "missionTitle">JOIN A COLLABORATIVE COMMUNIT
+                  <Typography variant='h3' gutterbottom className = "missionTitle up">JOIN A COLLABORATIVE COMMUNIT
                     Y OF PROBLEM SOLVERS</Typography>
+                    <Typography variant='h5' gutterbottom className = "missionTitle down">We are commited to blah blah insert mission statement here. Collaboration. Working together. Team work. Use enough eye catching and trusting words that
+                     whoever actually glances at this for reasurance they should sign up, is convinced to sign up today.</Typography>
                 </div>
               </Grid>
               <Grid item xs={2}></Grid>
