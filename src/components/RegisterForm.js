@@ -10,9 +10,9 @@ class RegisterForm extends React.Component {
     this.state = {
       email: "",
       password: "",
-      cPassword: "",
-      firstName: "",
-      lastName: ""
+      password2: "",
+      first_name: "",
+      last_name: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,31 +21,53 @@ class RegisterForm extends React.Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value
+      [name]: value,
     });
+  }
+
+  postData() {
+    var axios = require("axios");
+    var data = JSON.stringify(this.state);
+    var config = {
+      method: "post",
+      url: "https://faction-dev.herokuapp.com/api/user-api/register",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+    axios(config)
+      .then(function (response) {
+        alert("success");
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        alert("was an error, check console");
+        if (error.response) {
+          console.log("ERROR: Request made; server responded");
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log("ERROR: Request made; No response received");
+          console.log(error.request);
+        } else {
+          console.log("ERROR: Setting up the request triggered an Error");
+          console.log(error.message);
+        }
+      });
   }
   handleSubmit(event) {
     event.preventDefault();
-    const data = this.state;
+    // client validation
+    this.postData();
     this.setState({
       email: "",
       password: "",
-      cPassword: "",
-      firstName: "",
-      lastName: ""
+      password2: "",
+      first_name: "",
+      last_name: "",
     });
-    console.log({ user: data });
-    // validation needed
-    axios
-      .post("api/users", {
-        user: data
-      })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
   }
   render() {
     const data = this.state;
@@ -53,18 +75,18 @@ class RegisterForm extends React.Component {
       <>
         <TextField
           type="text"
-          name="firstName" // make sure this is the same as the state.firstName
+          name="first_name" // make sure this is the same as the state.first_name
           label="First Name:"
-          value={data.firstName}
+          value={data.first_name}
           onChange={this.handleChange}
           fullWidth
         />
         <br />
         <TextField
           type="text"
-          name="lastName" // make sure this is the same as the state.lastName
+          name="last_name" // make sure this is the same as the state.last_name
           label="Last Name:"
-          value={data.lastName}
+          value={data.last_name}
           onChange={this.handleChange}
           fullWidth
         />
@@ -89,9 +111,9 @@ class RegisterForm extends React.Component {
         <br />
         <TextField
           type="password"
-          name="cPassword" // make sure this is the same as the state.cPassword
+          name="password2" // make sure this is the same as the state.password2
           label="Confirm Password:"
-          value={data.cPassword}
+          value={data.password2}
           onChange={this.handleChange}
           fullWidth
         />

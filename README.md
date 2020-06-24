@@ -1,15 +1,13 @@
 # summerhacks-react
 
-- ReactJS for front end ui
-- Material UI library for some components
-- React-router for routing in SPA
-- axios for http requests
+-   ReactJS for front end ui
+-   Material UI library for some components
+-   React-router for routing in SPA
+-   axios for http requests
+-   JWT for authorization
 
 # TODO
-- make left panel look better
-- connect with backend api for api/auth and api/users requests
-- add client side validation (copy from backend)
-- figure out authentication with JSON tokens
-- deliverable: dashboard that displays your name once you log in
+
+-   uhh why is password's hash returned during register's api?
 
 Make sure to run `npm install`

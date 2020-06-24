@@ -9,7 +9,7 @@ class LoginForm extends React.Component {
     super(props);
     this.state = {
       email: "",
-      password: ""
+      password: "",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -18,28 +18,52 @@ class LoginForm extends React.Component {
     const name = event.target.name;
     const value = event.target.value;
     this.setState({
-      [name]: value
+      [name]: value,
     });
+  }
+
+  postData() {
+    var axios = require("axios");
+    const data = JSON.stringify(this.state);
+
+    var config = {
+      method: "post",
+      url: "https://faction-dev.herokuapp.com/api/user-api/login",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: data,
+    };
+
+    axios(config)
+      .then(function (response) {
+        alert("success, check console");
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        alert("was an error, check console");
+        if (error.response) {
+          console.log("ERROR: Request made; server responded");
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log("ERROR: Request made; No response received");
+          console.log(error.request);
+        } else {
+          console.log("ERROR: Setting up the request triggered an Error");
+          console.log(error.message);
+        }
+      });
   }
   handleSubmit(event) {
     event.preventDefault();
-    const data = this.state;
+    // client validation
+    this.postData();
     this.setState({
       email: "",
-      password: ""
+      password: "",
     });
-    console.log(data);
-    // validation needed
-    axios
-      .post("api/auth", {
-        data
-      })
-      .then(function(response) {
-        console.log(response);
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
   }
   render() {
     const data = this.state;
