@@ -22,23 +22,39 @@ class LoginForm extends React.Component {
     });
   }
 
+  /*
+var config = {
+  method: 'post',
+  url: 'https://faction-dev.herokuapp.com/api/user-api/dashboard_data',
+  headers: { 
+    'Content-Type': 'application/json', 
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZjNhZjYyN2I3NTY1MDAxNzMwMDE2OCIsImZpcnN0X25hbWUiOiJUZXN0IiwibGFzdF9uYW1lIjoiVGVzdCIsImlhdCI6MTU5MzAzMjY1MSwiZXhwIjoxNjI0NTg5NTc3fQ.BdgckMbT88gRYiL-CKJUM38r3TE2skP8iWxRbJ7jvzE'
+  },
+  data : data
+};
+
+
+*/
   postData() {
     var axios = require("axios");
-    const data = JSON.stringify(this.state);
+    //   const data = JSON.stringify(this.state);
 
     var config = {
       method: "post",
-      url: "https://faction-dev.herokuapp.com/api/user-api/login",
+      url:
+        "https://cors-anywhere.herokuapp.com/https://faction-dev.herokuapp.com/api/user-api/login",
       headers: {
         "Content-Type": "application/json",
       },
-      data: data,
+      data: this.state,
     };
 
     axios(config)
       .then(function (response) {
         alert("success, check console");
         console.log(JSON.stringify(response.data));
+        localStorage.setItem("author-token", response.data.token); // write
+        console.log(localStorage.getItem("author-token")); // read
       })
       .catch(function (error) {
         alert("was an error, check console");

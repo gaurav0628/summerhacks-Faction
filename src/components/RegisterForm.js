@@ -30,7 +30,8 @@ class RegisterForm extends React.Component {
     var data = JSON.stringify(this.state);
     var config = {
       method: "post",
-      url: "https://faction-dev.herokuapp.com/api/user-api/register",
+      url:
+        "https://cors-anywhere.herokuapp.com/https://faction-dev.herokuapp.com/api/user-api/register",
       headers: {
         "Content-Type": "application/json",
       },
