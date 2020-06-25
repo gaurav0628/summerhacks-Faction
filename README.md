@@ -10,5 +10,5 @@
 
 -   uhh why is password's hash returned during register's api?
 -   currently the token is stored in localStorage - this is kinda insecure but easy to use.
-
+-   CORS problem is temporarily fixed using https://cors-anywhere.herokuapp.com/
 Make sure to run `npm install`
