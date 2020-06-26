@@ -9,13 +9,19 @@ class RegisterForm extends React.Component {
     super(props);
     this.state = {
       email: "",
+      emailError: "",
       password: "",
+      passwordError: "",
       password2: "",
+      password2Error: "",
       first_name: "",
+      first_nameError: "",
       last_name: "",
+      last_nameError: "",
+
     };
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+     this.handleSubmit = this.handleSubmit.bind(this);
   }
   handleChange(event) {
     const name = event.target.name;
@@ -24,6 +30,50 @@ class RegisterForm extends React.Component {
       [name]: value,
     });
   }
+
+  validation = () => {
+    let isError = false;
+    const errors = {
+      first_nameError: "",
+      last_nameError: "",
+      emailError: "",
+      passwordError: "",
+      password2Error: "",
+    };
+
+    if(this.state.first_name.length < 1){
+      isError = true;
+      errors.first_nameError = "Input your first name";
+    }
+
+    if(this.state.last_name.length < 1){
+      isError = true;
+      errors.last_nameError = "Input your last name";
+    }
+
+    if(this.state.email.indexOf('@') === -1){
+      isError = true;
+      errors.emailError = "Input a valid e-mail";
+    }
+
+    if(this.state.password.length < 1){
+      isError = true;
+      errors.passwordError = "Create a password";
+    }
+
+    if(!(this.state.password === this.state.password2)){
+      isError = true;
+      errors.password2Error = "Passwords must match";
+    }
+
+    this.setState({
+      ...this.state,
+      ...errors
+    });
+
+    return isError;
+
+  };
 
   postData() {
     var axios = require("axios");
@@ -61,15 +111,28 @@ class RegisterForm extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     // client validation
-    this.postData();
-    this.setState({
-      email: "",
-      password: "",
-      password2: "",
-      first_name: "",
-      last_name: "",
-    });
+    const err = this.validation();
+    console.log("err");
+    if(!err){
+      this.postData();
+
+      this.setState({
+        email: "",
+        emailError: "",
+        password: "",
+        passwordError: "",
+        password2: "",
+        password2Error: "",
+        first_name: "",
+        first_nameError: "",
+        last_name: "",
+        last_nameError: "",
+      });
+
+
+    }
   }
+
   render() {
     const data = this.state;
     return (
@@ -80,6 +143,8 @@ class RegisterForm extends React.Component {
           label="First Name:"
           value={data.first_name}
           onChange={this.handleChange}
+          error = {data.first_nameError}
+           helperText={data.first_nameError}
           fullWidth
         />
         <br />
@@ -89,6 +154,8 @@ class RegisterForm extends React.Component {
           label="Last Name:"
           value={data.last_name}
           onChange={this.handleChange}
+          error = {data.last_nameError}
+           helperText={data.last_nameError}
           fullWidth
         />
         <br />
@@ -98,7 +165,10 @@ class RegisterForm extends React.Component {
           label="Email Address:"
           value={data.email}
           onChange={this.handleChange}
+          error = {data.emailError}
+          helperText={data.emailError}
           fullWidth
+          required={true}
         />
         <br />
         <TextField
@@ -107,6 +177,8 @@ class RegisterForm extends React.Component {
           label="Password:"
           value={data.password}
           onChange={this.handleChange}
+          error = {data.passwordError}
+          helperText={data.passwordError}
           fullWidth
         />
         <br />
@@ -116,6 +188,8 @@ class RegisterForm extends React.Component {
           label="Confirm Password:"
           value={data.password2}
           onChange={this.handleChange}
+          error = {data.password2Error}
+          helperText={data.password2Error}
           fullWidth
         />
         <br />
