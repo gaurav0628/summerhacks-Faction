@@ -22,19 +22,6 @@ class LoginForm extends React.Component {
     });
   }
 
-  /*
-var config = {
-  method: 'post',
-  url: 'https://faction-dev.herokuapp.com/api/user-api/dashboard_data',
-  headers: { 
-    'Content-Type': 'application/json', 
-    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZjNhZjYyN2I3NTY1MDAxNzMwMDE2OCIsImZpcnN0X25hbWUiOiJUZXN0IiwibGFzdF9uYW1lIjoiVGVzdCIsImlhdCI6MTU5MzAzMjY1MSwiZXhwIjoxNjI0NTg5NTc3fQ.BdgckMbT88gRYiL-CKJUM38r3TE2skP8iWxRbJ7jvzE'
-  },
-  data : data
-};
-
-
-*/
   postData() {
     var axios = require("axios");
     //   const data = JSON.stringify(this.state);
