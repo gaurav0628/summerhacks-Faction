@@ -23,7 +23,6 @@ class LoginForm extends React.Component {
   }
 
   postData() {
-    var axios = require("axios");
     //   const data = JSON.stringify(this.state);
 
     var config = {

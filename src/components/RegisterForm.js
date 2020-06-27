@@ -74,7 +74,6 @@ class RegisterForm extends React.Component {
   };
 
   postData() {
-    var axios = require("axios");
     var data = JSON.stringify(this.state);
     var config = {
       method: "post",
