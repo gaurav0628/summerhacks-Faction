@@ -5,10 +5,10 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
-class NavBar extends React.Component {
+class LandingNavigationBar extends React.Component {
   render() {
     return (
-      <>
+      <div>
         <AppBar position="static">
           <Toolbar>
             <Grid
@@ -58,9 +58,9 @@ class NavBar extends React.Component {
             </Grid>
           </Toolbar>
         </AppBar>
-      </>
+      </div>
     );
   }
 }
 
-export default NavBar;
+export default LandingNavigationBar;

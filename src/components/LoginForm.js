@@ -21,10 +21,7 @@ class LoginForm extends React.Component {
       [name]: value,
     });
   }
-
-  postData() {
-    //   const data = JSON.stringify(this.state);
-
+  async postData() {
     var config = {
       method: "post",
       url:
@@ -34,16 +31,17 @@ class LoginForm extends React.Component {
       },
       data: this.state,
     };
-
-    axios(config)
+    var verdict = null;
+    await axios(config)
       .then(function (response) {
-        alert("success, check console");
+        alert("Successfully logged in!");
+        verdict = true;
+        localStorage.setItem("author-token", response.data.token);
         console.log(JSON.stringify(response.data));
-        localStorage.setItem("author-token", response.data.token); // write
-        console.log(localStorage.getItem("author-token")); // read
       })
       .catch(function (error) {
-        alert("was an error, check console");
+        alert("Failed to log-in. Details in console.");
+        verdict = false;
         if (error.response) {
           console.log("ERROR: Request made; server responded");
           console.log(error.response.data);
@@ -57,20 +55,24 @@ class LoginForm extends React.Component {
           console.log(error.message);
         }
       });
+    return verdict;
   }
-  handleSubmit(event) {
+  async handleSubmit(event) {
     event.preventDefault();
-    // client validation
-    this.postData();
+    let verdict = await this.postData();
     this.setState({
       email: "",
       password: "",
     });
+    console.log("verdict of axios login request & return value = " + verdict);
+    if (verdict) {
+      window.location.reload(false);
+    }
   }
   render() {
     const data = this.state;
     return (
-      <>
+      <div>
         <TextField
           type="email"
           name="email" // make sure this is the same as the state.email
@@ -101,7 +103,7 @@ class LoginForm extends React.Component {
         <Button variant="contained" component={Link} to="/register" fullWidth>
           Register Instead
         </Button>
-      </>
+      </div>
     );
   }
 }

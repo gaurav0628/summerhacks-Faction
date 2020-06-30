@@ -1,19 +1,16 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
 
-import Landing from "./pages/Landing";
-import Dashboard from "./pages/Dashboard";
+import Landing from "./views/Landing";
+import Dashboard from "./views/Dashboard";
 
 class App extends React.Component {
-	render() {
-		// return <Landing />;
-		return (
-			<Switch>
-				<Route path="/dashboard" component={Dashboard} />
-				<Route path="/" component={Landing} />
-			</Switch>
-		);
-	}
+  isAuthorized() {
+    const auth_token = localStorage.getItem("author-token");
+    return auth_token ? true : false;
+  }
+  render() {
+    return this.isAuthorized() ? <Dashboard /> : <Landing />;
+  }
 }
 
 export default App;

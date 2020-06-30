@@ -29,7 +29,6 @@ class RegisterForm extends React.Component {
       [name]: value,
     });
   }
-
   validation = () => {
     let isError = false;
     const errors = {
@@ -39,40 +38,32 @@ class RegisterForm extends React.Component {
       passwordError: "",
       password2Error: "",
     };
-
     if (this.state.first_name.length < 1) {
       isError = true;
       errors.first_nameError = "Input your first name";
     }
-
     if (this.state.last_name.length < 1) {
       isError = true;
       errors.last_nameError = "Input your last name";
     }
-
     if (this.state.email.indexOf("@") === -1) {
       isError = true;
       errors.emailError = "Input a valid e-mail";
     }
-
     if (this.state.password.length < 1) {
       isError = true;
       errors.passwordError = "Create a password";
     }
-
     if (!(this.state.password === this.state.password2)) {
       isError = true;
       errors.password2Error = "Passwords must match";
     }
-
     this.setState({
       ...this.state,
       ...errors,
     });
-
     return isError;
   };
-
   postData() {
     var data = JSON.stringify(this.state);
     var config = {
@@ -107,12 +98,10 @@ class RegisterForm extends React.Component {
   }
   handleSubmit(event) {
     event.preventDefault();
-    // client validation
     const err = this.validation();
     console.log("err");
     if (!err) {
       this.postData();
-
       this.setState({
         email: "",
         emailError: "",
@@ -127,11 +116,10 @@ class RegisterForm extends React.Component {
       });
     }
   }
-
   render() {
     const data = this.state;
     return (
-      <>
+      <div>
         <TextField
           type="text"
           name="first_name" // make sure this is the same as the state.first_name
@@ -200,7 +188,7 @@ class RegisterForm extends React.Component {
         <Button variant="contained" component={Link} to="/login" fullWidth>
           Log in Instead
         </Button>
-      </>
+      </div>
     );
   }
 }
