@@ -1,5 +1,0 @@
-/*
-
-takes in PROP of group ID and user ID
-
-*/

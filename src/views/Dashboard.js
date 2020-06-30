@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { Grid } from "@material-ui/core";
-
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
 import AppBar from "@material-ui/core/AppBar";
@@ -15,6 +14,9 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import InboxIcon from "@material-ui/icons/MoveToInbox";
 import MailIcon from "@material-ui/icons/Mail";
+import IconButton from "@material-ui/core/IconButton";
+import MenuIcon from "@material-ui/icons/Menu";
+import DashboardNavigationBar from "../components/DashboardNavigationBar";
 
 function SelectedListItem(props) {
   const classes = makeStyles((theme) => ({
@@ -90,7 +92,7 @@ const ClippedDrawerUsedStyles = makeStyles((theme) => ({
   },
 }));
 
-function ClippedDrawer(props) {
+function MyGroups(props) {
   const classes = ClippedDrawerUsedStyles();
   return (
     <div className={classes.root}>
@@ -151,34 +153,31 @@ function ClippedDrawer(props) {
 }
 
 class Dashboard extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      first_name: "Jason",
-      last_name: "Yuan",
-      user_id: "123456",
-      group_ids: ["123", "456"],
-      which_display: "All" /*Can also be Behind, InProgress, Completed*/,
-    };
-  }
-
-  render_group(index) {
+  render() {
     return (
       <div>
-        <h1> user_id = {this.state.user_id} </h1>
-        <h1> {this.state.group_ids[index]} </h1>;
+        <DashboardNavigationBar />
+        <Switch>
+          <Route
+            path="/explore"
+            component={() => (
+              <Typography variant="h6" noWrap>
+                This will be the explore page
+              </Typography>
+            )}
+          />
+          <Route path="/mygroups" component={() => <MyGroups />} />
+          <Route
+            path="/profile"
+            component={() => (
+              <Typography variant="h6" noWrap>
+                This will be the profile page
+              </Typography>
+            )}
+          />
+        </Switch>
       </div>
     );
-  }
-
-  render() {
-    const auth_token = localStorage.getItem("author-token");
-    if (!auth_token) {
-      //  alert("need to login first yo");
-    } else {
-      //  alert("token is good: " + auth_token);
-    }
-    return <ClippedDrawer />;
   }
 }
 
