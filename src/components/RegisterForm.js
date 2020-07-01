@@ -77,11 +77,11 @@ class RegisterForm extends React.Component {
     };
     axios(config)
       .then(function (response) {
-        alert("success");
+        alert("Successfully Registered");
         console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
-        alert("was an error, check console");
+        alert("Error");
         if (error.response) {
           console.log("ERROR: Request made; server responded");
           console.log(error.response.data);
