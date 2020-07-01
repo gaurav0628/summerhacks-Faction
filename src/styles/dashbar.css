@@ -1,0 +1,9 @@
+/* Forcing a color change to the navbar */
+/* to whatever needs a blue */
+.cooloor{
+  background-color: #1889DE !important;
+}
+
+.greys{
+  background-color: #D6D6D6;
+}

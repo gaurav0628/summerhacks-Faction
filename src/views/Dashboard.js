@@ -9,6 +9,8 @@ import ListItemText from "@material-ui/core/ListItemText";
 
 import DashboardNavigationBar from "../components/DashboardNavigationBar";
 import Example from "./Example";
+import ClassCard from "../components/ClassCard";
+import "../styles/dashbar.css";
 
 class MyGroups extends React.Component {
   constructor(props) {
@@ -78,13 +80,33 @@ class Dashboard extends React.Component {
   render() {
     //  return <Example />; // what the styling should look like
     return (
-      <div>
+      <div class="greys">
         <DashboardNavigationBar />
-        <Switch>
-          <Route path="/explore" component={() => <h1> explore </h1>} />
-          <Route path="/profile" component={() => <h1> profile </h1>} />
-          <Route path="/" component={() => <MyGroups />} />
-        </Switch>
+        <Grid container>
+
+
+          <Grid container xs={2} class = "cooloor">
+            <Grid item xs={12}>
+              <Switch>
+                <Route path="/explore" component={() => <h1> explore </h1>} />
+                <Route path="/profile" component={() => <h1> profile </h1>} />
+                <Route path="/" component={() => <MyGroups />} />
+              </Switch>
+            </Grid>
+          </Grid>
+          <Grid container xs={1}/>
+          <Grid container direction = "row"  xs={8} spacing={2}>
+            <Grid item xs={12}>
+              <ClassCard/>
+            </Grid>
+            <Grid item xs={12}>
+              <ClassCard/>
+            </Grid>
+          </Grid>
+          <Grid container xs={1}/>
+
+
+        </Grid>
       </div>
     );
   }
