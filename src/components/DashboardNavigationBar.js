@@ -4,6 +4,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Button from "@material-ui/core/Button";
 import "../styles/dashbar.css";
+import AvatarBubble from "./AvatarBubble";
 
 
 class DashboardNavigationBar extends React.Component {
@@ -19,6 +20,9 @@ class DashboardNavigationBar extends React.Component {
 					</Button>
 					<Button fullWidth color="inherit" component={Link} to="/profile">
 						My Profile
+					</Button>
+					<Button component={Link} to="/profile">
+						<AvatarBubble/>
 					</Button>
 				</Toolbar>
 			</AppBar>
