@@ -6,6 +6,8 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import Typography from '@material-ui/core/Typography';
+
 
 import DashboardNavigationBar from "../components/DashboardNavigationBar";
 import Example from "./Example";
@@ -69,8 +71,32 @@ class MyGroups extends React.Component {
   }
   render() {
     return (
-      <div>
-        {this.optionsMenu()} {this.groups()}
+      <div class="greys">
+      <Grid container>
+       <Grid container xs={2} class = "cooloor">
+        <Grid item xs={12}>
+          {this.optionsMenu()} {this.groups()}
+          </Grid>
+        </Grid>
+
+        <Grid container xs={1}/>
+        <Grid container direction = "row"  xs={8} spacing={4}>
+        <Grid item xs={12}>
+          <Typography>My Groups: </Typography>
+        </Grid>
+          <Grid item xs={12}>
+            <ClassCard/>
+          </Grid>
+          <Grid item xs={12}>
+            <ClassCard/>
+          </Grid>
+          <Grid item xs={12}>
+            <ClassCard/>
+          </Grid>
+          </Grid>
+        <Grid container xs={1}/>
+
+        </Grid>
       </div>
     );
   }
@@ -80,33 +106,15 @@ class Dashboard extends React.Component {
   render() {
     //  return <Example />; // what the styling should look like
     return (
-      <div class="greys">
+      <div>
         <DashboardNavigationBar />
-        <Grid container>
 
-
-          <Grid container xs={2} class = "cooloor">
-            <Grid item xs={12}>
               <Switch>
                 <Route path="/explore" component={() => <h1> explore </h1>} />
                 <Route path="/profile" component={() => <h1> profile </h1>} />
                 <Route path="/" component={() => <MyGroups />} />
               </Switch>
-            </Grid>
-          </Grid>
-          <Grid container xs={1}/>
-          <Grid container direction = "row"  xs={8} spacing={2}>
-            <Grid item xs={12}>
-              <ClassCard/>
-            </Grid>
-            <Grid item xs={12}>
-              <ClassCard/>
-            </Grid>
-          </Grid>
-          <Grid container xs={1}/>
 
-
-        </Grid>
       </div>
     );
   }
