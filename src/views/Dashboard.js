@@ -7,12 +7,14 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from '@material-ui/core/Typography';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 
 
 import DashboardNavigationBar from "../components/DashboardNavigationBar";
 import Example from "./Example";
 import ClassCard from "../components/ClassCard";
 import "../styles/dashbar.css";
+import AvatarBubble from "../components/AvatarBubble";
 
 class MyGroups extends React.Component {
   constructor(props) {
@@ -25,6 +27,12 @@ class MyGroups extends React.Component {
     const data = this.state;
     return (
       <List>
+        <ListItem>
+          <ListItemAvatar>
+            <AvatarBubble/>
+          </ListItemAvatar>
+          <ListItemText primary="User's Dashboard"/>
+        </ListItem>
         <ListItem
           button
           selected={data.filter === "all"}
