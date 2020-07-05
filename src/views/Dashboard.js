@@ -79,8 +79,8 @@ class MyGroups extends React.Component {
   }
   render() {
     return (
-      <div class="greys">
-      <Grid container>
+      <div class="greys covers">
+      <Grid container  >
        <Grid container xs={2} class = "cooloor">
         <Grid item xs={12}>
           {this.optionsMenu()} {this.groups()}
@@ -88,7 +88,7 @@ class MyGroups extends React.Component {
         </Grid>
 
         <Grid container xs={1}/>
-        <Grid container direction = "row"  xs={8} spacing={4}>
+        <Grid container direction = "row"  xs={8} spacing={4} >
         <Grid item xs={12}>
           <Typography>My Groups: </Typography>
         </Grid>
@@ -102,7 +102,7 @@ class MyGroups extends React.Component {
             <ClassCard/>
           </Grid>
           </Grid>
-        <Grid container xs={1}/>
+        <Grid container xs={1} class = "covers"/>
 
         </Grid>
       </div>
