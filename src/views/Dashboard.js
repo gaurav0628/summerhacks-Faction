@@ -1,121 +1,19 @@
 import React, { Fragment } from "react";
 import { Switch, Route } from "react-router-dom";
-import { Grid } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
-import Typography from "@material-ui/core/Typography";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
 import DashboardNavigationBar from "../components/DashboardNavigationBar";
-import Example from "./Example";
-import ClassCard from "../components/ClassCard";
-import "../styles/dashbar.css";
-import AvatarBubble from "../components/AvatarBubble";
-
-class MyGroups extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      filter: "all",
-    };
-  }
-  optionsMenu() {
-    const data = this.state;
-    return (
-      <List>
-        <ListItem>
-          <ListItemAvatar>
-            <AvatarBubble />
-          </ListItemAvatar>
-          <ListItemText primary="User's Dashboard" />
-        </ListItem>
-        <ListItem
-          button
-          selected={data.filter === "all"}
-          onClick={(event) => {
-            this.setState({ filter: "all" });
-          }}
-        >
-          <ListItemText primary="All Groups" />
-        </ListItem>
-        <ListItem
-          button
-          selected={data.filter === "fal"}
-          onClick={(event) => {
-            this.setState({ filter: "fal" });
-          }}
-        >
-          <ListItemText primary="Falling Behind" />
-        </ListItem>
-        <ListItem
-          button
-          selected={data.filter === "inp"}
-          onClick={(event) => {
-            this.setState({ filter: "inp" });
-          }}
-        >
-          <ListItemText primary="In Progress" />
-        </ListItem>
-        <ListItem
-          button
-          selected={data.filter === "com"}
-          onClick={(event) => {
-            this.setState({ filter: "com" });
-          }}
-        >
-          <ListItemText primary="Completed" />
-        </ListItem>
-      </List>
-    );
-  }
-  groups() {
-    const data = this.state;
-    // POST = {JWT token, filter} RESPONSE = {group ids}
-    const groupids = ["123", "456", "789"];
-    return (
-      <React.Fragment>
-        <h1> {data.filter} </h1>
-        <Grid container direction="row" xs={8} spacing={4}>
-          {groupids.map((g) => (
-            <Grid item xs={12} key={g}>
-              <ClassCard id={g} />
-            </Grid>
-          ))}
-        </Grid>
-      </React.Fragment>
-    );
-  }
-  render() {
-    return (
-      <div class="greys covers">
-        <Grid container>
-          <Grid container xs={2} class="cooloor">
-            <Grid item xs={12}>
-              {this.optionsMenu()}
-            </Grid>
-          </Grid>
-          <Grid container xs={1} />
-          {this.groups()}
-          <Grid container xs={1} class = "covers" />
-        </Grid>
-      </div>
-    );
-  }
-}
+import MyGroups from "../components/MyGroups";
+import Profile from "../components/Profile";
+import ExploreGroups from "../components/ExploreGroups";
 
 class Dashboard extends React.Component {
   render() {
-    //  return <Example />; // what the styling should look like
     return (
       <div>
         <DashboardNavigationBar />
-
         <Switch>
-          <Route path="/explore" component={() => <h1> explore </h1>} />
-          <Route path="/profile" component={() => <h1> profile </h1>} />
+          <Route path="/explore" component={() => <ExploreGroups />} />
+          <Route path="/profile" component={() => <Profile />} />
           <Route path="/" component={() => <MyGroups />} />
         </Switch>
       </div>

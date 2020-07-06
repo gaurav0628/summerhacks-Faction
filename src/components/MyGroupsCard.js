@@ -30,7 +30,7 @@ const useStyles = makeStyles({
   },
 });
 
-export default function SimpleCard(props) {
+export default function MyGroupsCard(props) {
   const classes = useStyles();
   const [id, set_id] = useState(props.id);
   const [name, set_name] = useState(null);
