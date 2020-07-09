@@ -25,7 +25,8 @@ class LoginForm extends React.Component {
     var config = {
       method: "post",
       url:
-        "https://obscure-temple-54174.herokuapp.com/https://faction-dev.herokuapp.com/api/user-api/login",
+        //"https://obscure-temple-54174.herokuapp.com/https://faction-dev.herokuapp.com/api/user-api/login",
+        "https://faction-dev.herokuapp.com/api/user-api/login",
       headers: {
         "Content-Type": "application/json",
       },

@@ -69,7 +69,8 @@ class RegisterForm extends React.Component {
     var config = {
       method: "post",
       url:
-        "https://obscure-temple-54174.herokuapp.com/https://faction-dev.herokuapp.com/api/user-api/register",
+        //"https://obscure-temple-54174.herokuapp.comhttps://faction-dev.herokuapp.com/api/user-api/register",
+        "https://faction-dev.herokuapp.com/api/user-api/register",
       headers: {
         "Content-Type": "application/json",
       },
