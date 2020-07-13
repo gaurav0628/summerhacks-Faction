@@ -10,8 +10,8 @@ import AvatarGroup from "@material-ui/lab/AvatarGroup";
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275,
-    height: 130,
+    minWidth: 200,
+    height: 150,
     borderRadius: 0,
   },
   greenRed: {
@@ -24,10 +24,7 @@ const useStyles = makeStyles({
   },
   title: {
     color: 151212,
-  },
-  pos: {
-    marginBottom: 12,
-  },
+  }
 });
 
 export default function MyGroupsCard(props) {
@@ -48,7 +45,7 @@ export default function MyGroupsCard(props) {
       <CardContent>
         <Grid container alignItems="center">
           <Grid container xs={4}>
-            <Typography className={classes.title} variant="h4" component="h2">
+            <Typography className={classes.title} variant="h5">
               <strong>{name}</strong>
             </Typography>
           </Grid>

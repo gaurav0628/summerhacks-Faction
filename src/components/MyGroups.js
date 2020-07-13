@@ -67,20 +67,21 @@ class MyGroups extends React.Component {
         >
           <ListItemText primary="Completed" />
         </ListItem>
+        <h1> {data.filter} </h1>
       </List>
+
     );
   }
 
   groups() {
     const data = this.state;
     // POST = {JWT token, filter} RESPONSE = {group ids}
-    const groupids = ["123", "456", "789"];
+    const groupids = ["123", "456", "789", "123", "456", "789", "123", "456", "789"];
     return (
       <React.Fragment>
-        <h1> {data.filter} </h1>
-        <Grid container direction="row" xs={8} spacing={4}>
+        <Grid container direction="row" xs={8} spacing={4} >
           {groupids.map((g) => (
-            <Grid item xs={12} key={g}>
+            <Grid item xs={12} key={g} class = "delSides">
               <MyGroupsCard id={g} />
             </Grid>
           ))}
@@ -91,16 +92,16 @@ class MyGroups extends React.Component {
 
   render() {
     return (
-      <div class="greys covers">
+      <div class="covers greys">
         <Grid container>
           <Grid container xs={2} class="cooloor">
             <Grid item xs={12}>
               {this.optionsMenu()}
             </Grid>
           </Grid>
-          <Grid container xs={1} />
-          {this.groups()}
-          <Grid container xs={1} class="covers" />
+          <Grid container xs={1}/>
+              {this.groups()}
+          <Grid container xs={1}/>
         </Grid>
       </div>
     );
