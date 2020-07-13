@@ -1,0 +1,8 @@
+.searchBar {
+	flex-grow: 1;
+	width: 100%;
+	background: #ffffff;
+	border: 1px solid #dbdbdb;
+	border-radius: 45px;
+	padding: 4px;
+}
