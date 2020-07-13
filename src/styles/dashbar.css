@@ -5,9 +5,25 @@
 }
 
 .greys{
-  background-color: #D6D6D6;
+  background-color: #D6D6D6 !important;
+  width:100%;
+  height: 100%
 }
 
 .covers{
   height: 100vh;
+  overflow-x: hidden;
+}
+
+.pad{
+  padding-top: 5vh;
+  overflow: hidden;
+
+}
+
+.delSides{
+  padding-left: 0px;
+  padding-right: 0px;
+  padding-top: 3vh;
+  padding-bottom: 3vh;
 }
