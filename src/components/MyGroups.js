@@ -24,7 +24,7 @@ class MyGroups extends React.Component {
   optionsMenu() {
     const data = this.state;
     return (
-      <List>
+      <List class = "cov">
         <ListItem>
           <ListItemAvatar>
             <AvatarBubble />
@@ -76,7 +76,7 @@ class MyGroups extends React.Component {
   groups() {
     const data = this.state;
     // POST = {JWT token, filter} RESPONSE = {group ids}
-    const groupids = ["123", "456", "789", "123", "456", "789", "123", "456", "789"];
+    const groupids = ["123", "123", "123", "123", "123", "123", "123", "123"];
     return (
       <React.Fragment>
         <Grid container direction="row" xs={8} spacing={4} >
@@ -94,7 +94,7 @@ class MyGroups extends React.Component {
     return (
       <div class="covers greys">
         <Grid container>
-          <Grid container xs={2} class="cooloor">
+          <Grid container xs={2} class = "cooloor">
             <Grid item xs={12}>
               {this.optionsMenu()}
             </Grid>

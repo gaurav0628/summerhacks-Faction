@@ -10,9 +10,18 @@
   height: 100%
 }
 
+.cov{
+  height: 100vh;
+  overflow: hidden;
+  margin: 0px;
+  padding: 0px;
+}
+
 .covers{
   height: 100vh;
   overflow-x: hidden;
+  margin: 0px;
+  padding: 0px;
 }
 
 .pad{
