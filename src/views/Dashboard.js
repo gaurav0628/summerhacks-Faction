@@ -5,6 +5,8 @@ import DashboardNavigationBar from "../components/DashboardNavigationBar";
 import MyGroups from "../components/MyGroups";
 import Profile from "../components/Profile";
 import ExploreGroups from "../components/ExploreGroups";
+import GroupView from "../components/GroupView";
+import CreateGroup from "../components/CreateGroup";
 
 class Dashboard extends React.Component {
   render() {
@@ -14,6 +16,8 @@ class Dashboard extends React.Component {
         <Switch>
           <Route path="/explore" component={() => <ExploreGroups />} />
           <Route path="/profile" component={() => <Profile />} />
+          <Route path="/group" component={() => <GroupView />} />
+          <Route path="/create" component={() => <CreateGroup />} />
           <Route path="/" component={() => <MyGroups />} />
         </Switch>
       </div>

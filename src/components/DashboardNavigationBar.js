@@ -18,9 +18,6 @@ class DashboardNavigationBar extends React.Component {
           <Button fullWidth color="inherit" component={Link} to="/mygroups">
             My Groups
           </Button>
-          <Button fullWidth color="inherit" component={Link} to="/profile">
-            My Profile
-          </Button>
           <Button component={Link} to="/profile">
             <AvatarBubble />
           </Button>

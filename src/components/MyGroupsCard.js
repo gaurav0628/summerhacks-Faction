@@ -7,6 +7,7 @@ import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 import Avatar from "@material-ui/core/Avatar";
 import AvatarGroup from "@material-ui/lab/AvatarGroup";
+import { Link } from "react-router-dom";
 
 const useStyles = makeStyles({
   root: {
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
   },
   title: {
     color: 151212,
-  }
+  },
 });
 
 export default function MyGroupsCard(props) {
@@ -48,6 +49,9 @@ export default function MyGroupsCard(props) {
             <Typography className={classes.title} variant="h5">
               <strong>{name}</strong>
             </Typography>
+            <Button color="inherit" component={Link} to={"/group/" + id}>
+              Link to the actual Group page
+            </Button>
           </Grid>
 
           <Grid container direction="row" xs={4}>
