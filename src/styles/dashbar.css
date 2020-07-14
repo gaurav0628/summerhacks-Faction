@@ -36,3 +36,10 @@
   padding-top: 3vh;
   padding-bottom: 3vh;
 }
+
+.background-panel{
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+
+}
