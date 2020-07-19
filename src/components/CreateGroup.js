@@ -9,8 +9,8 @@ class CreateGroup extends React.Component {
     this.state = {
       courseName: "",
       link: "",
-      startDate: "",
-      endDate: "",
+      startDate: "1999-12-31",
+      endDate: "1999-12-31",
       aList: "",
     };
     this.handleChange = this.handleChange.bind(this);
@@ -29,8 +29,8 @@ class CreateGroup extends React.Component {
     this.setState({
       courseName: "",
       link: "",
-      startDate: "",
-      endDate: "",
+      startDate: "1999-12-31",
+      endDate: "1999-12-31",
       aList: "",
     });
   }
@@ -64,7 +64,7 @@ class CreateGroup extends React.Component {
         </Grid>
         <Grid item xs={7}>
           <TextField
-            type="text"
+            type="date"
             onChange={this.handleChange}
             fullWidth
             variant="outlined"
@@ -75,7 +75,7 @@ class CreateGroup extends React.Component {
         </Grid>
         <Grid item xs={7}>
           <TextField
-            type="text"
+            type="date"
             onChange={this.handleChange}
             fullWidth
             variant="outlined"
