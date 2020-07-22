@@ -6,6 +6,7 @@ import Avatar from "@material-ui/core/Avatar";
 import Typography from "@material-ui/core/Typography";
 import ProfileTextBox from "./ProfileTextBox";
 import ProfileAvatar from "./ProfileAvatar";
+import Button from "@material-ui/core/Button";
 
 
 class Profile extends React.Component {
@@ -45,6 +46,15 @@ class Profile extends React.Component {
         <ProfileTextBox>Name</ProfileTextBox>
         <ProfileTextBox>Name</ProfileTextBox>
         <ProfileTextBox>Name</ProfileTextBox>
+        <Button
+          variant="contained"
+          color="secondary"
+          onClick={this.handleSubmit}
+          fullWidth
+        >
+          Save
+        </Button>
+
 
         </Grid>
 
