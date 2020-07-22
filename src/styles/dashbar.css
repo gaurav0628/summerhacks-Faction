@@ -43,3 +43,13 @@
   object-fit: cover;
 
 }
+
+.bottom{
+  vertical-align: text-bottom;
+}
+
+.push{
+  padding-top: 2.5vh;
+  text-align: right;
+
+}
