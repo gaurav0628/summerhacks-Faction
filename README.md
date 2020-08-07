@@ -1,6 +1,6 @@
 # IMPORTANT
 * Currently using local server.
-* to use, first pull backend, run `npm install`, run `nodemon server.js`
+* to use, first pull backend (https://github.com/gauravUFL/summer-faction-backend), run `npm install`, and run `nodemon server.js`. Make sure this is successful.
 * then pull this repo, run `npm install`, run `npm start`
 
 # summerhacks-react
