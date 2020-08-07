@@ -1,3 +1,8 @@
+# IMPORTANT
+* Currently using local server.
+* to use, first pull backend, run `npm install`, run `nodemon server.js`
+* then pull this repo, run `npm install`, run `npm start`
+
 # summerhacks-react
 
 -   ReactJS for front end ui
