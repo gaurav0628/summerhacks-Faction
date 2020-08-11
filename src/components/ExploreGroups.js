@@ -8,6 +8,8 @@ import { Grid } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
+import Typography from "@material-ui/core/Typography";
+
 
 import ExploreGroupsCard from "./ExploreGroupsCard";
 import "../styles/searchBar.css";
@@ -69,21 +71,33 @@ class ExploreGroups extends React.Component {
     console.log(this.state.searchResults);
   }
 
+
+   exGroups(){
+    var populatedCards = []
+
+    for (var cards of this.state.searchResults){
+        populatedCards.push(ExploreGroupsCard(cards));
+        console.log(cards);
+    }
+     return(populatedCards);
+
+
+  }
+
   render() {
     return (
       <div>
-        <Button color="inherit" onClick={this.searchRequest}> 
+        <Button color="inherit" onClick={this.searchRequest}>
           This button is just for testing searchRequest method
         </Button>
 
-        <Button color="inherit" component={Link} to="/create">
-          Create New Group
-        </Button>
+
 
         <Grid container spacing={5} justify="center" alignItems="center">
           <Grid item xs={12} />
           <Grid item xs={12} />
-          <Grid item xs={6}>
+          <Grid item xs={3}/>
+          <Grid item xs={6} >
             <div className="searchBar">
               <InputBase fullWidth placeholder=" Find your next group..." />
             </div>
@@ -93,24 +107,22 @@ class ExploreGroups extends React.Component {
               <SearchIcon />
             </IconButton>
           </Grid>
-          <Grid item xs={8}>
-            <ExploreGroupsCard />
+          <Grid item xs={2}/>
+
+          <Grid item xs={5}/>
+          <Grid item xs={2} >
+          <Typography align="center">or</Typography>
+            <Button color="inherit" component={Link} to="/create">
+              Create New Group
+            </Button>
           </Grid>
+          <Grid item xs={5}/>
+
           <Grid item xs={8}>
-            <ExploreGroupsCard />
+            {this.exGroups()}
           </Grid>
-          <Grid item xs={8}>
-            <ExploreGroupsCard />
-          </Grid>
-          <Grid item xs={8}>
-            <ExploreGroupsCard />
-          </Grid>
-          <Grid item xs={8}>
-            <ExploreGroupsCard />
-          </Grid>
-          <Grid item xs={8}>
-            <ExploreGroupsCard />
-          </Grid>
+
+
         </Grid>
       </div>
     );

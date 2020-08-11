@@ -7,6 +7,20 @@ import Button from "@material-ui/core/Button";
 import Link from "@material-ui/core/Link";
 
 function ExploreGroupsCard(props) {
+  // We can make it so it outputs cuter later I guess.
+  function date(str){
+    var correct = str.substring(0, str.indexOf("T"));
+    return correct;
+  }
+  //Dont roast me for not using a dictionary .<.
+  var name = props.course_name;
+  var link = props.course_link;
+  var start = date(props.date_started);
+  var end = date(props.expected_end_date);
+  //I dont know what I'm supposed to do with these :E
+  var memberEmails = props.member_list_emails;
+  var memberNames = props.member_list_names;
+
   return (
     <Card variant="outlined">
       <CardContent>
@@ -14,12 +28,12 @@ function ExploreGroupsCard(props) {
           <Grid item xs={8} spacing={1} container>
             <Grid item xs={12}>
               <Typography variant="h4">
-                <strong>Machine Learning, Coursera </strong>
+                <strong>{name}</strong>
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography variant="h5">
-                <strong> June 6, 2020 - September 10, 2020 </strong>
+                <strong> {start} -> {end} </strong>
               </Typography>
             </Grid>
             <Grid item xs={12}>
@@ -43,7 +57,7 @@ function ExploreGroupsCard(props) {
               </Grid>
               <Grid item xs={12}>
                 <Typography>
-                  <Link href="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                  <Link href= {link}>
                     Visit Course
                   </Link>
                 </Typography>
