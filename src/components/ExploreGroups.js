@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, { Fragment } from "react";
 
 import { Link } from "react-router-dom";
 
@@ -40,9 +40,7 @@ class ExploreGroups extends React.Component {
     super(props);
     this.state = {
       searchText: "",
-      searchResults: [
-
-      ],
+      searchResults: [],
     };
     this.searchRequest = this.searchRequest.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -106,10 +104,12 @@ class ExploreGroups extends React.Component {
     const searchData = this.state.searchResults;
     return (
       <div>
-        <Grid container spacing={5} justify="center" alignItems="center">
+        <Grid container   direction="row" spacing={3} justify="center" alignItems="center">
           <Grid item xs={12} />
           <Grid item xs={12} />
-          <Grid item xs={3} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
           <Grid item xs={6}>
             <div className="searchBar">
               <InputBase
@@ -130,16 +130,13 @@ class ExploreGroups extends React.Component {
               <SearchIcon />
             </IconButton>
           </Grid>
-          <Grid item xs={2} />
 
-          <Grid item xs={5} />
-          <Grid item xs={2}>
-            <Typography align="center">or</Typography>
+          <Grid container item xs={10} justify="center" alignItems="center">
             <Button color="inherit" component={Link} to="/create">
-              Create New Group
+              Or... Create Your Own Group
             </Button>
           </Grid>
-          <Grid item xs={5} />
+
           <SearchResults data={searchData} />
         </Grid>
       </div>
