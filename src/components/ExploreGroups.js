@@ -1,4 +1,4 @@
-import React from "react";
+import React, {Fragment} from "react";
 
 import { Link } from "react-router-dom";
 
@@ -10,21 +10,53 @@ import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 import Typography from "@material-ui/core/Typography";
 
-
 import ExploreGroupsCard from "./ExploreGroupsCard";
 import "../styles/searchBar.css";
 import KEYS from "../keys.js";
+
+function equals(obj1, obj2) {
+  return JSON.stringify(obj1) === JSON.stringify(obj2);
+}
+
+class SearchResults extends React.Component {
+  shouldComponentUpdate(nextProps, nextState) {
+    return !equals(nextProps, this.props);
+  }
+  render() {
+    return (
+      <React.Fragment>
+        {this.props.data.map((result, index) => (
+          <Grid item xs={8} key={index}>
+            {ExploreGroupsCard(result)}
+          </Grid>
+        ))}
+      </React.Fragment>
+    );
+  }
+}
 
 class ExploreGroups extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchText: "Dog",
-      searchResults: [{"_id":"5f2b43cf21827be9ff68d5ca","course_name":"Dog Walking","member_list_names":"gauravthapliyal1111@gmail.com","member_list_emails":"GauravThapliyal","course_link":"https://www.abc.com","date_started":"2020-08-04T04:00:00.000Z","expected_end_date":"2020-09-04T04:00:00.000Z","__v":0},{"_id":"5f2dddaaf501fa9753514ec2","course_name":"Dog Walking 2","member_list_names":"gauravthapliyal1111@gmail.com","member_list_emails":"GauravThapliyal","course_link":"https://www.abc.com","date_started":"2020-08-04T04:00:00.000Z","expected_end_date":"2020-09-04T04:00:00.000Z","__v":0}],
+      searchText: "",
+      searchResults: [
+
+      ],
     };
     this.searchRequest = this.searchRequest.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
-  async searchRequest() { // when called, it will send a search request for the string in this.state.searchText and update searchResults.
+  handleChange(event) {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value,
+    });
+  }
+  async searchRequest() {
+    console.log("searchtext: " + this.state.searchText);
+    // when called, it will send a search request for the string in this.state.searchText and update searchResults.
     var qs = require("qs");
     var data = qs.stringify({
       search_text: this.state.searchText,
@@ -70,59 +102,45 @@ class ExploreGroups extends React.Component {
     }
     console.log(this.state.searchResults);
   }
-
-
-   exGroups(){
-    var populatedCards = []
-
-    for (var cards of this.state.searchResults){
-        populatedCards.push(ExploreGroupsCard(cards));
-        console.log(cards);
-    }
-     return(populatedCards);
-
-
-  }
-
   render() {
+    const searchData = this.state.searchResults;
     return (
       <div>
-        <Button color="inherit" onClick={this.searchRequest}>
-          This button is just for testing searchRequest method
-        </Button>
-
-
-
         <Grid container spacing={5} justify="center" alignItems="center">
           <Grid item xs={12} />
           <Grid item xs={12} />
-          <Grid item xs={3}/>
-          <Grid item xs={6} >
+          <Grid item xs={3} />
+          <Grid item xs={6}>
             <div className="searchBar">
-              <InputBase fullWidth placeholder=" Find your next group..." />
+              <InputBase
+                fullWidth
+                placeholder=" Find your next group..."
+                name="searchText"
+                value={this.state.searchText}
+                onChange={this.handleChange}
+              />
             </div>
           </Grid>
           <Grid item xs={1}>
-            <IconButton variant="contained" color="primary">
+            <IconButton
+              variant="contained"
+              color="primary"
+              onClick={this.searchRequest}
+            >
               <SearchIcon />
             </IconButton>
           </Grid>
-          <Grid item xs={2}/>
+          <Grid item xs={2} />
 
-          <Grid item xs={5}/>
-          <Grid item xs={2} >
-          <Typography align="center">or</Typography>
+          <Grid item xs={5} />
+          <Grid item xs={2}>
+            <Typography align="center">or</Typography>
             <Button color="inherit" component={Link} to="/create">
               Create New Group
             </Button>
           </Grid>
-          <Grid item xs={5}/>
-
-          <Grid item xs={8}>
-            {this.exGroups()}
-          </Grid>
-
-
+          <Grid item xs={5} />
+          <SearchResults data={searchData} />
         </Grid>
       </div>
     );
