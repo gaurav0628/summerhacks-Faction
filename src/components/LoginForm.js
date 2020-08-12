@@ -38,7 +38,10 @@ class LoginForm extends React.Component {
         alert("Successfully logged in!");
         verdict = true;
         localStorage.setItem("auth-token", response.data.token);
-        localStorage.setItem("user", response.data.user);
+        localStorage.setItem("first_name", response.data.user.first_name);
+        localStorage.setItem("last_name", response.data.user.last_name);
+        localStorage.setItem("email", response.data.user.email);
+        console.log("EMAILLLL: " + response.data.user.email)
         console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {

@@ -63,7 +63,7 @@ class ExploreGroups extends React.Component {
       method: "post",
       url: KEYS.APIURL + "/groups-api/search",
       headers: {
-        "x-auth-token": KEYS.DEVTOKEN,
+        "x-auth-token": localStorage.getItem("auth-token"),
         "Content-Type": "application/x-www-form-urlencoded",
       },
       data: data,

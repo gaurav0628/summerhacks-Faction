@@ -3,6 +3,8 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 
+import KEYS from "../keys.js";
+
 class CreateGroup extends React.Component {
   constructor(props) {
     super(props);
@@ -20,13 +22,51 @@ class CreateGroup extends React.Component {
     this.setState({ [event.target.name]: event.target.value });
   }
   handleSubmit(event) {
-    const data = this.state;
-    alert(data.courseName);
-    alert(data.link);
-    alert(data.startDate);
-    alert(data.endDate);
-    alert(data.aList);
-    this.setState({
+    var axios = require("axios");
+    var qs = require("qs");
+    var data = qs.stringify({
+      course_name: this.state.courseName,
+      course_link: this.state.link,
+      date_started: this.state.startDate,
+      expected_end_date: this.state.endDate,
+      assignments_list: this.state.aList,
+      first_name: localStorage.getItem("first_name"),
+      last_name: localStorage.getItem("last_name"),
+      email: localStorage.getItem("email"),
+    });
+    var config = {
+      method: "post",
+      url: KEYS.APIURL + "/groups-api/writeGroups",
+      headers: {
+        "x-auth-token": localStorage.getItem("auth-token"),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: data,
+    };
+
+    console.log(config);
+
+    axios(config)
+      .then(function (response) {
+        alert("Success!");
+        console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        alert("Error");
+        if (error.response) {
+          console.log("ERROR: Request made; server responded");
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log("ERROR: Request made; No response received");
+          console.log(error.request);
+        } else {
+          console.log("ERROR: Setting up the request triggered an Error");
+          console.log(error.message);
+        }
+      });
+    this.setState ({
       courseName: "",
       link: "",
       startDate: "1999-12-31",

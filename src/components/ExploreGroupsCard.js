@@ -21,6 +21,9 @@ function ExploreGroupsCard(props) {
   var memberEmails = props.member_list_emails;
   var memberNames = props.member_list_names;
 
+  function handleClick(){
+    alert("enrooll");
+  }
   return (
     <Card variant="outlined">
       <CardContent>
@@ -36,11 +39,6 @@ function ExploreGroupsCard(props) {
                 <strong> {start} -> {end} </strong>
               </Typography>
             </Grid>
-            <Grid item xs={12}>
-              <Typography variant="h6">
-                <strong>15/20 enrolled </strong>
-              </Typography>
-            </Grid>
           </Grid>
           <Grid item xs={4}>
             <Grid container direction="column" alignItems="center" spacing={2}>
@@ -51,6 +49,7 @@ function ExploreGroupsCard(props) {
                   variant="contained"
                   color="secondary"
                   disableElevation
+                  onClick={handleClick}
                 >
                   Enroll In Course
                 </Button>
