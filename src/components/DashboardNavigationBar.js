@@ -8,6 +8,12 @@ import "../styles/dashbar.css";
 import AvatarBubble from "./AvatarBubble";
 
 class DashboardNavigationBar extends React.Component {
+  handleClick(){
+    window.localStorage.clear();
+    alert("success");
+    window.location.reload();
+  }
+
   render() {
     return (
       <AppBar position="static" class="cooloor">
@@ -18,8 +24,8 @@ class DashboardNavigationBar extends React.Component {
           <Button fullWidth color="inherit" component={Link} to="/mygroups">
             My Groups
           </Button>
-          <Button component={Link} to="/profile">
-            <AvatarBubble />
+          <Button color="inherit" onClick={this.handleClick}>
+            Log Out
           </Button>
         </Toolbar>
       </AppBar>

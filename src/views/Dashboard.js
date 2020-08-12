@@ -15,7 +15,6 @@ class Dashboard extends React.Component {
         <DashboardNavigationBar />
         <Switch>
           <Route path="/explore" component={() => <ExploreGroups />} />
-          <Route path="/profile" component={() => <Profile />} />
           <Route path="/group" component={() => <GroupView />} />
           <Route path="/create" component={() => <CreateGroup />} />
           <Route path="/" component={() => <MyGroups />} />

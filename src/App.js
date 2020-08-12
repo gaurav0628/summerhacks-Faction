@@ -4,8 +4,7 @@ import Dashboard from "./views/Dashboard";
 
 class App extends React.Component {
   isAuthorized() {
-    const auth_token = localStorage.getItem("author-token");
-    return true;
+    const auth_token = localStorage.getItem("auth-token");
     return auth_token ? true : false;
   }
   render() {
