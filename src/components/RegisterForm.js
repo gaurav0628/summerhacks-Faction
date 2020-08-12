@@ -4,6 +4,8 @@ import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { Link } from "react-router-dom";
 
+import KEYS from "../keys.js";
+
 class RegisterForm extends React.Component {
   constructor(props) {
     super(props);
@@ -68,8 +70,7 @@ class RegisterForm extends React.Component {
     var data = JSON.stringify(this.state);
     var config = {
       method: "post",
-      url:
-        "https://obscure-temple-54174.herokuapp.comhttps://faction-dev.herokuapp.com/api/user-api/register",
+      url: KEYS.APIURL + "/user-api/register",
       headers: {
         "Content-Type": "application/json",
       },
@@ -81,7 +82,6 @@ class RegisterForm extends React.Component {
         console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
-        alert("Error");
         if (error.response) {
           console.log("ERROR: Request made; server responded");
           console.log(error.response.data);

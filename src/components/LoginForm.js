@@ -4,6 +4,8 @@ import TextField from "@material-ui/core/TextField";
 import axios from "axios";
 import { Link } from "react-router-dom";
 
+import KEYS from "../keys.js";
+
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
@@ -24,8 +26,7 @@ class LoginForm extends React.Component {
   async postData() {
     var config = {
       method: "post",
-      url:
-        "https://obscure-temple-54174.herokuapp.com/https://faction-dev.herokuapp.com/api/user-api/login",
+      url: KEYS.APIURL + "/user-api/login",
       headers: {
         "Content-Type": "application/json",
       },
@@ -36,7 +37,8 @@ class LoginForm extends React.Component {
       .then(function (response) {
         alert("Successfully logged in!");
         verdict = true;
-        localStorage.setItem("author-token", response.data.token);
+        localStorage.setItem("auth-token", response.data.token);
+        localStorage.setItem("user", response.data.user);
         console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
@@ -66,7 +68,7 @@ class LoginForm extends React.Component {
     });
     console.log("verdict of axios login request & return value = " + verdict);
     if (verdict) {
-      window.location.reload(false);
+      window.location.reload();
     }
   }
   render() {
