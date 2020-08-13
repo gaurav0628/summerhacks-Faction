@@ -8,6 +8,9 @@ import LoginForm from "../components/LoginForm";
 import RegisterForm from "../components/RegisterForm";
 import "../styles/Landing.css";
 
+import Card from "@material-ui/core/Card";
+import CardContent from "@material-ui/core/CardContent";
+
 class Landing extends React.Component {
   render() {
     return (
@@ -20,26 +23,23 @@ class Landing extends React.Component {
                 src={require("../images/collaboration.jpg")}
                 className="leftPanelImg"
               />
-              <Grid item xs={2}></Grid>
+              <Grid item xs={2} />
               <Grid item xs={8}>
                 <div>
                   <Typography
-                    variant="h4"
+                    variant="h3"
                     gutterbottom
                     className="missionTitle up"
                   >
-                    JOIN A COLLABORATIVE COMMUNIT Y OF PROBLEM SOLVERS
+                    Join a collaborative community of problem solvers
                   </Typography>
                   <Typography
-                    variant="h6"
+                    variant="h5"
                     gutterbottom
                     className="missionTitle down"
                   >
-                    We are commited to blah blah insert mission statement here.
-                    Collaboration. Working together. Team work. Use enough eye
-                    catching and trusting words that whoever actually glances at
-                    this for reasurance they should sign up, is convinced to
-                    sign up today.
+                    Our mission is to create a truly collaborative learning
+                    enviornment. INSERT SOME SHIT HERE.
                   </Typography>
                 </div>
               </Grid>
@@ -51,12 +51,23 @@ class Landing extends React.Component {
                 direction="row"
                 justify="center"
                 alignItems="center"
+                spacing={5}
               >
+                <Grid item xs={7} />
+                <Grid item xs={7} />
+                <Grid item xs={7} />
+                <Grid item xs={7} />
+                <Grid item xs={7} />
+                <Grid item xs={7} />
                 <Grid item xs={7}>
-                  <Switch>
-                    <Route path="/register" component={RegisterForm} />
-                    <Route path="/" component={LoginForm} />
-                  </Switch>
+                  <Card variant="outlined">
+                    <CardContent>
+                      <Switch>
+                        <Route path="/register" component={RegisterForm} />
+                        <Route path="/" component={LoginForm} />
+                      </Switch>
+                    </CardContent>
+                  </Card>
                 </Grid>
               </Grid>
             </Grid>

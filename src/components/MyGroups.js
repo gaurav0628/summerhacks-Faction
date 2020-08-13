@@ -12,7 +12,7 @@ import { withStyles } from "@material-ui/core/styles";
 
 import MyGroupsCard from "../components/MyGroupsCard";
 import AvatarBubble from "../components/AvatarBubble";
-//import "../styles/dashbar.css";
+import "../styles/dashbar.css";
 import KEYS from "../keys.js";
 
 const WhiteTextTypography = withStyles({
@@ -101,7 +101,7 @@ class MyGroups extends React.Component {
             this.setState({ filter: "fal" });
           }}
         >
-          <WhiteTextTypography variant="h6">Fall Behind Groups</WhiteTextTypography>
+          <WhiteTextTypography variant="h6">Falling Behind Groups</WhiteTextTypography>
         </ListItem>
         <ListItem
           button

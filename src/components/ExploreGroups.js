@@ -9,10 +9,12 @@ import IconButton from "@material-ui/core/IconButton";
 import SearchIcon from "@material-ui/icons/Search";
 import axios from "axios";
 import Typography from "@material-ui/core/Typography";
+import AddIcon from "@material-ui/icons/Add";
 
 import ExploreGroupsCard from "./ExploreGroupsCard";
 import "../styles/searchBar.css";
 import KEYS from "../keys.js";
+import "../styles/dashbar.css";
 
 function equals(obj1, obj2) {
   return JSON.stringify(obj1) === JSON.stringify(obj2);
@@ -23,15 +25,31 @@ class SearchResults extends React.Component {
     return !equals(nextProps, this.props);
   }
   render() {
-    return (
-      <React.Fragment>
-        {this.props.data.map((result, index) => (
-          <Grid item xs={8} key={index}>
-            {ExploreGroupsCard(result)}
-          </Grid>
-        ))}
-      </React.Fragment>
-    );
+    if (this.props.data) {
+      if (this.props.data.length > 0) {
+        return (
+          <React.Fragment>
+            {this.props.data.map((result, index) => (
+              <Grid item xs={8} key={index}>
+                {ExploreGroupsCard(result)}
+              </Grid>
+            ))}
+          </React.Fragment>
+        );
+      } else {
+        return (
+          <React.Fragment>
+            <Grid item xs={8}>
+              <Typography variant="h4" gutterBottom>
+                No Results Found :({" "}
+              </Typography>
+            </Grid>
+          </React.Fragment>
+        );
+      }
+    } else {
+      return <React.Fragment />;
+    }
   }
 }
 
@@ -40,7 +58,7 @@ class ExploreGroups extends React.Component {
     super(props);
     this.state = {
       searchText: "",
-      searchResults: [],
+      searchResults: null,
     };
     this.searchRequest = this.searchRequest.bind(this);
     this.handleChange = this.handleChange.bind(this);
@@ -100,16 +118,48 @@ class ExploreGroups extends React.Component {
     }
     console.log(this.state.searchResults);
   }
+  buffer() {
+    if (this.state.searchResults) {
+      return (
+        <React.Fragment>
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+        </React.Fragment>
+      );
+    } else {
+      return (
+        <React.Fragment>
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+          <Grid item xs={12} />
+        </React.Fragment>
+      );
+    }
+  }
   render() {
     const searchData = this.state.searchResults;
     return (
-      <div>
-        <Grid container   direction="row" spacing={3} justify="center" alignItems="center">
-          <Grid item xs={12} />
-          <Grid item xs={12} />
-          <Grid item xs={12} />
-          <Grid item xs={12} />
-          <Grid item xs={12} />
+      <div class="covers greys">
+        <Grid
+          container
+          direction="row"
+          spacing={3}
+          justify="center"
+          alignItems="center"
+        >
+          {this.buffer()}
           <Grid item xs={6}>
             <div className="searchBar">
               <InputBase
@@ -129,14 +179,15 @@ class ExploreGroups extends React.Component {
             >
               <SearchIcon />
             </IconButton>
+            <IconButton
+              variant="contained"
+              color="primary"
+              component={Link}
+              to="/create"
+            >
+              <AddIcon />
+            </IconButton>
           </Grid>
-
-          <Grid container item xs={10} justify="center" alignItems="center">
-            <Button color="inherit" component={Link} to="/create">
-              Or... Create Your Own Group
-            </Button>
-          </Grid>
-
           <SearchResults data={searchData} />
         </Grid>
       </div>

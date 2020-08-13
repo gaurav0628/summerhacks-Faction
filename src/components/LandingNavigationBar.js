@@ -38,23 +38,8 @@ class LandingNavigationBar extends React.Component {
                 </Button>
               </Grid>
               <Grid item xs={7} />
-              <Grid item xs={1}>
-                <Button fullWidth color="inherit" component={Link} to="/">
-                  Log in
-                </Button>
-              </Grid>
-              <Grid item xs={1}>
-                <Button
-                  fullWidth
-                  variant="contained"
-                  disableElevation
-                  color="secondary"
-                  component={Link}
-                  to="/register"
-                >
-                  Register
-                </Button>
-              </Grid>
+              <Grid item xs={1}></Grid>
+              <Grid item xs={1}></Grid>
             </Grid>
           </Toolbar>
         </AppBar>
