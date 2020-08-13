@@ -1,19 +1,8 @@
-# IMPORTANT
-* Currently using local server.
-* to use, first pull backend (https://github.com/gauravUFL/summer-faction-backend), run `npm install`, and run `nodemon server.js`. Make sure this is successful.
-* then pull this repo, run `npm install`, run `npm start`
+# Introduction
+Faction is a web application designed to foster small group interactions in Massive Open Online Courses (or MOOCs)
 
-# summerhacks-react
+# About the Code
+This is the front-end repo. It was made primarily with React and Material-UI
 
--   ReactJS for front end ui
--   Material UI library for some components
--   React-router for routing in SPA
--   axios for http requests
--   JWT for authorization
-
-# TODO
-
--   uhh why is password's hash returned during register's api?
--   currently the token is stored in localStorage - this is kinda insecure but easy to use.
--   CORS problem is temporarily fixed using https://cors-anywhere.herokuapp.com/
-Make sure to run `npm install`
+# Deployment
+See Link Here: 

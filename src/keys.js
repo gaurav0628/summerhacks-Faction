@@ -1,6 +1,5 @@
 module.exports = {
-  APIURL: "http://localhost:5000/api",
-	DEVTOKEN: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVlZjNhZjYyN2I3NTY1MDAxNzMwMDE2OCIsImVtYWlsIjoidGVzdEB0ZXN0LmNvbSIsImlhdCI6MTU5NjY2OTg1NCwiZXhwIjoxNjI4MjI2NzgwfQ.D65PGtyrqpaPYCJGesRbOe3R6lrY1R6AhqAlntcR-UA",
+  APIURL: "https://faction-dev-backend.herokuapp.com/api",
 };
 
 
