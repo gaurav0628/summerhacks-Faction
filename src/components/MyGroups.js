@@ -8,11 +8,18 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import Typography from "@material-ui/core/Typography";
 import ListItemAvatar from "@material-ui/core/ListItemAvatar";
+import { withStyles } from "@material-ui/core/styles";
 
 import MyGroupsCard from "../components/MyGroupsCard";
 import AvatarBubble from "../components/AvatarBubble";
 //import "../styles/dashbar.css";
 import KEYS from "../keys.js";
+
+const WhiteTextTypography = withStyles({
+  root: {
+    color: "#FFFFFF",
+  },
+})(Typography);
 
 class MyGroups extends React.Component {
   constructor(props) {
@@ -76,9 +83,7 @@ class MyGroups extends React.Component {
     return (
       <List class="cov">
         <ListItem>
-          <ListItemText
-            primary={localStorage.getItem("first_name") + "'s Dashboard"}
-          />
+          <WhiteTextTypography variant="h4">{localStorage.getItem("first_name") + "'s Dashboard"}</WhiteTextTypography>
         </ListItem>
         <ListItem
           button
@@ -87,7 +92,7 @@ class MyGroups extends React.Component {
             this.setState({ filter: "all" });
           }}
         >
-          <ListItemText primary="All Groups" />
+          <WhiteTextTypography variant="h6">All Groups</WhiteTextTypography>
         </ListItem>
         <ListItem
           button
@@ -96,7 +101,7 @@ class MyGroups extends React.Component {
             this.setState({ filter: "fal" });
           }}
         >
-          <ListItemText primary="Falling Behind" />
+          <WhiteTextTypography variant="h6">Fall Behind Groups</WhiteTextTypography>
         </ListItem>
         <ListItem
           button
@@ -105,7 +110,7 @@ class MyGroups extends React.Component {
             this.setState({ filter: "inp" });
           }}
         >
-          <ListItemText primary="In Progress" />
+          <WhiteTextTypography variant="h6">In Progress Groups</WhiteTextTypography>
         </ListItem>
         <ListItem
           button
@@ -114,7 +119,7 @@ class MyGroups extends React.Component {
             this.setState({ filter: "com" });
           }}
         >
-          <ListItemText primary="Completed" />
+          <WhiteTextTypography variant="h6">Completed Groups</WhiteTextTypography>
         </ListItem>
       </List>
     );

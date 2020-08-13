@@ -37,7 +37,7 @@ export default function MyGroupsCard(props) {
           </Grid>
 
 
-          <Grid item xs={3} spacing={1} container>
+          <Grid item xs={3} spacing={1} container >
             <Grid item xs={12}>
               <Button
                 variant="contained"
@@ -50,7 +50,7 @@ export default function MyGroupsCard(props) {
             <Grid item xs={12}>
               {assignments_list.split("\n").map((item, i) => (
                 <div key={i}>
-                  <Typography variant="body2">{item}</Typography>
+                  <Typography variant="subtitle1">{item}</Typography>
                 </div>
               ))}
             </Grid>
