@@ -11,7 +11,7 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 
 import MyGroupsCard from "../components/MyGroupsCard";
 import AvatarBubble from "../components/AvatarBubble";
-import "../styles/dashbar.css";
+//import "../styles/dashbar.css";
 import KEYS from "../keys.js";
 
 class MyGroups extends React.Component {
@@ -34,7 +34,7 @@ class MyGroups extends React.Component {
 
     var config = {
       method: "post",
-      url: KEYS.APIURL+"/courses-api/getCourses",
+      url: KEYS.APIURL + "/courses-api/getCourses",
       headers: {
         "x-auth-token": localStorage.getItem("auth-token"),
         "Content-Type": "application/x-www-form-urlencoded",
@@ -42,7 +42,7 @@ class MyGroups extends React.Component {
       data: data,
     };
     console.log(config);
-    
+
     let results = null;
     await axios(config)
       .then(function (response) {
@@ -64,9 +64,9 @@ class MyGroups extends React.Component {
         }
       });
 
-    if(results){
-      this.setState({courseInfo: results});
-    } else{
+    if (results) {
+      this.setState({ courseInfo: results });
+    } else {
       alert("error retrieving");
     }
   }
@@ -76,7 +76,9 @@ class MyGroups extends React.Component {
     return (
       <List class="cov">
         <ListItem>
-          <ListItemText primary={localStorage.getItem("first_name")+"'s Dashboard"} />
+          <ListItemText
+            primary={localStorage.getItem("first_name") + "'s Dashboard"}
+          />
         </ListItem>
         <ListItem
           button
@@ -118,20 +120,6 @@ class MyGroups extends React.Component {
     );
   }
 
-  groups() {
-    return (
-      <React.Fragment>
-        <Grid container direction="row" xs={8} spacing={4}>
-          {this.state.courseInfo.map((c, index) => (
-            <Grid item xs={12} key={index} class="delSides">
-              <MyGroupsCard info={c} fullWidth/>
-            </Grid>
-          ))}
-        </Grid>
-      </React.Fragment>
-    );
-  }
-
   render() {
     return (
       <div class="covers greys">
@@ -142,7 +130,15 @@ class MyGroups extends React.Component {
             </Grid>
           </Grid>
           <Grid container xs={1} />
-          {this.groups()}
+
+          <Grid container direction="row" xs={8} spacing={4}>
+            <Grid item xs={12} />
+            {this.state.courseInfo.map((c, index) => (
+              <Grid item xs={12} key={index}>
+                <MyGroupsCard info={c} />
+              </Grid>
+            ))}
+          </Grid>
           <Grid container xs={1} />
         </Grid>
       </div>
