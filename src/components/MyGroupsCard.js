@@ -30,27 +30,32 @@ const useStyles = makeStyles({
 
 export default function MyGroupsCard(props) {
   const classes = useStyles();
-  const [id, set_id] = useState(props.id);
-  const [name, set_name] = useState(null);
-  const [status, set_status] = useState(null);
-  const [todo, set_todo] = useState(null);
-  const [office, set_office] = useState(null);
-  useEffect(() => {
-    set_name(id + "Algorithms, MITOpenCourseWare");
-    set_status("Overdue");
-    set_todo("6/18: Write Paper 6/22: Final Project");
-    set_office("Monday 6-8 pm CST");
-  });
+
+  function date(str) {
+    var correct = str.substring(0, str.indexOf("T"));
+    return correct;
+  }
+
+  const id = props.info.id;
+  const expected_end_date = date(props.info.expected_end_date);
+  const date_started = date(props.info.date_started);
+  const course_name = props.info.course_name;
+  const status = props.info.status;
+  const assignments_list = props.info.assignments_list;
+  const assignments = assignments_list
+    .split("\n")
+    .map((item, i) => <div key={i}>{item}</div>);
+
   return (
     <Card className={classes.root}>
       <CardContent>
         <Grid container alignItems="center">
           <Grid container xs={4}>
             <Typography className={classes.title} variant="h5">
-              <strong>{name}</strong>
+              <strong>{course_name}</strong>
             </Typography>
             <Button color="inherit" component={Link} to={"/group/" + id}>
-              Link to the actual Group page
+              Visit Group
             </Button>
           </Grid>
 
@@ -60,7 +65,7 @@ export default function MyGroupsCard(props) {
             </Grid>
             <Grid item xs={12}>
               <Typography color="textSecondary" gutterBottom>
-                {todo}
+                {assignments}
               </Typography>
             </Grid>
           </Grid>
@@ -68,24 +73,13 @@ export default function MyGroupsCard(props) {
           <Grid container direction="row" xs={4}>
             <Grid item xs={12}>
               <Typography color="textSecondary" gutterBottom>
-                Office Hours here: {office}
+                Start Date: {date_started}
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography color="textSecondary" gutterBottom>
-                Whos online here:
+                End Date: {expected_end_date}
               </Typography>
-
-              <AvatarGroup max={4}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
-                <Avatar alt="Travis Howard" src="/static/images/avatar/2.jpg" />
-                <Avatar alt="Cindy Baker" src="/static/images/avatar/3.jpg" />
-                <Avatar alt="Agnes Walker" src="/static/images/avatar/4.jpg" />
-                <Avatar
-                  alt="Trevor Henderson"
-                  src="/static/images/avatar/5.jpg"
-                />
-              </AvatarGroup>
             </Grid>
           </Grid>
         </Grid>

@@ -12,13 +12,63 @@ import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import MyGroupsCard from "../components/MyGroupsCard";
 import AvatarBubble from "../components/AvatarBubble";
 import "../styles/dashbar.css";
+import KEYS from "../keys.js";
 
 class MyGroups extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       filter: "all",
+      courseInfo: [],
     };
+    this.request = this.request.bind(this);
+    this.request();
+  }
+
+  async request() {
+    var axios = require("axios");
+    var qs = require("qs");
+    var data = qs.stringify({
+      email: localStorage.getItem("email"),
+    });
+
+    var config = {
+      method: "post",
+      url: KEYS.APIURL+"/courses-api/getCourses",
+      headers: {
+        "x-auth-token": localStorage.getItem("auth-token"),
+        "Content-Type": "application/x-www-form-urlencoded",
+      },
+      data: data,
+    };
+    console.log(config);
+    
+    let results = null;
+    await axios(config)
+      .then(function (response) {
+        console.log(JSON.stringify(response.data));
+        results = response.data;
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log("ERROR: Request made; server responded");
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request) {
+          console.log("ERROR: Request made; No response received");
+          console.log(error.request);
+        } else {
+          console.log("ERROR: Setting up the request triggered an Error");
+          console.log(error.message);
+        }
+      });
+
+    if(results){
+      this.setState({courseInfo: results});
+    } else{
+      alert("error retrieving");
+    }
   }
 
   optionsMenu() {
@@ -26,10 +76,7 @@ class MyGroups extends React.Component {
     return (
       <List class="cov">
         <ListItem>
-          <ListItemAvatar>
-            <AvatarBubble />
-          </ListItemAvatar>
-          <ListItemText primary="User's Dashboard" />
+          <ListItemText primary={localStorage.getItem("first_name")+"'s Dashboard"} />
         </ListItem>
         <ListItem
           button
@@ -67,22 +114,17 @@ class MyGroups extends React.Component {
         >
           <ListItemText primary="Completed" />
         </ListItem>
-        <h1> {data.filter} </h1>
       </List>
     );
   }
 
   groups() {
-    const data = this.state;
-    // POST = {JWT token, filter} RESPONSE = {group ids}
-
-    const groupids = ["4sd561", "4sd561"];
     return (
       <React.Fragment>
         <Grid container direction="row" xs={8} spacing={4}>
-          {groupids.map((g) => (
-            <Grid item xs={12} key={g} class="delSides">
-              <MyGroupsCard id={g} />
+          {this.state.courseInfo.map((c, index) => (
+            <Grid item xs={12} key={index} class="delSides">
+              <MyGroupsCard info={c} fullWidth/>
             </Grid>
           ))}
         </Grid>
